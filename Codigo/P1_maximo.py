@@ -7,6 +7,7 @@ def funcion(x):
     """
     Maximizar la función f(x)=x sen(10πx) + 1, con x ∈[0,1].
     """
+    #return x**2 - 1.23*x-6.2
     #return np.cos(10*np.pi*x)*np.sin(x-9.5*np.pi*x)
     return x * np.sin(10 * np.pi * x) + 1
 
@@ -38,14 +39,14 @@ for i in range(generaciones):
         
     sl.actualizar()
     pb.actualizar()
-    
-    print('AP', round(pb.aptitud_poblacion, 6),
-          'AS', round(sl.aptitud_poblacion, 6),
-          'MF', round(pb.mejor_fenotipo, 6),
-          'AM', max(round(pb.aptitud_maxima, 6), round(sl.aptitud_maxima, 6)))
+    #
+    #print('AP', round(pb.aptitud_poblacion, 6),
+    #      'AS', round(sl.aptitud_poblacion, 6),
+    #      'MF', round(pb.mejor_fenotipo, 6),
+    #      'AM', max(round(pb.aptitud_maxima, 6), round(sl.aptitud_maxima, 6)))
 
     if sl.aptitud_maxima > pb.aptitud_maxima:
-        print("Nueva poblacion")
+        print("Nueva poblacion", pb.aptitud_maxima)
         pb = sl
     
     pb.actualizar()

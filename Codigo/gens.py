@@ -1,6 +1,5 @@
 import random
 import numpy as np
-import copy
 
 class gen:
     def __init__(self, ancho,largo, tipo, rango_max=256, rango_min=0, aptitud=0, fenotipo=0, prob_cruce=0):
@@ -19,25 +18,41 @@ class gen:
         elif tipo == "flotante":
             self.value = np.random.uniform(rango_min, rango_max, size=(largo, ancho))
 
+    def clone(self):
+        # Crear una instancia básica sin volver a generar el array interno (ahorra tiempo)
+        clon = gen(self.ancho, self.largo, self.tipo, self.rango_max, self.rango_min, 
+                   self.aptitud, self.fenotipo, self.prob_cruce)
+        # Copiar el array numpy (extremadamente más rápido que copy.deepcopy)
+        clon.value = self.value.copy()
+        return clon
+
     def mutacion(self):
         l_i=random.randint(0, self.largo-1)
         a_i=random.randint(0, self.ancho-1)
         if self.tipo == "binario":
-            self.value[l_i,a_i]=int(not self.value[l_i,a_i])
+            self.value[l_i,a_i] = 1 - self.value[l_i,a_i]
         elif self.tipo == "entero":
             self.value[l_i,a_i]=random.randint(self.rango_min, self.rango_max)
         elif self.tipo == "flotante":
             self.value[l_i,a_i]=random.uniform(self.rango_min, self.rango_max)
 
+    def mutacion_fuerte(self):
+        if self.tipo == "binario":
+            self.value = np.random.randint(0, 2, size=(self.largo, self.ancho))
+        elif self.tipo == "entero":
+            self.value = np.random.randint(self.rango_min, self.rango_max, size=(self.largo, self.ancho))
+        elif self.tipo == "flotante":
+            self.value = np.random.uniform(self.rango_min, self.rango_max, size=(self.largo, self.ancho))
+
     def cruce(self, pareja, mascara=None):
         if mascara is None:
             mascara = np.zeros((self.largo, self.ancho))
-        for i in range(self.largo):
-            for j in range(self.ancho):
-                if mascara[i,j] == 1:
-                    self.value[i,j] = self.value[i,j]
-                else:
-                    self.value[i,j] = pareja.value[i,j]
+        # Convertimos la máscara a booleana para usarla como índice
+        filtro = (mascara == 0)
+        # Hacemos el intercambio mutuo de ambas matrices de forma vectorizada (muy rápido)
+        temp = self.value[filtro].copy()
+        self.value[filtro] = pareja.value[filtro]
+        pareja.value[filtro] = temp
 
     def __str__(self):
         return str(self.value)
@@ -65,14 +80,12 @@ class poblacion:
         self.genes.sort(key=lambda x: x.aptitud, reverse=True)
 
     def aptitud_total(self):
-        self.aptitud_poblacion = 0
-        for i in range(self.tamano):
-            self.aptitud_poblacion += self.genes[i].aptitud
+        self.aptitud_poblacion = sum(gen.aptitud for gen in self.genes)
 
     def prob_cruce_poblacion(self):
         self.aptitud_total()
-        for i in range(self.tamano):
-            self.genes[i].prob_cruce = self.genes[i].aptitud / self.aptitud_poblacion
+        for gen in self.genes:
+            gen.prob_cruce = gen.aptitud / self.aptitud_poblacion
 
     def prob_max(self):
         self.prob_maxima = max(self.genes, key=lambda x: x.prob_cruce).prob_cruce
@@ -121,13 +134,11 @@ class poblacion:
         lista=lista.astype(int)
         for i in lista:
             mascara=np.random.randint(0, 2, size=(self.largo, self.ancho))
-            #print(self.genes[i].value, self.genes[i+1].value, mascara)
+            # Hacemos el cruce mutuo llamando a la función una sola vez
             self.genes[i].cruce(self.genes[i+1], mascara)
-            self.genes[i+1].cruce(self.genes[i], mascara)
-            #print(self.genes[i].value, self.genes[i+1].value)
 
-    def add_gen(self, gen):
-        self.genes.append(copy.deepcopy(gen))  # Hace una copia real e independiente del gen
+    def add_gen(self, gen_obj):
+        self.genes.append(gen_obj.clone())  # Hace una copia real usando nuestro método rápido
         self.tamano += 1
 
     def del_gen(self, gen):

@@ -25,15 +25,21 @@ Con esto, se presenta una grafica del mejor individuo con el correr de la simula
 ## Verdadera democracia. Suponga que usted es el jefe de gobierno y está interesado en que pasen los proyectos de su programa político. Sin embargo, en el congreso conformado por 5 partidos, no es fácil su tránsito, por lo que debe repartir el poder, conformado por ministerios y otras agencias del gobierno, con base en la representación de cada partido. Cada entidad estatal tiene un peso de poder, que es el que se debe distribuir. Suponga que hay 50 curules, distribuya aleatoriamente, con una distribución no informe entre los 5 partidos esas curules. Defina una lista de 50 entidades y asígneles aleatoriamente un peso político de 1 a 100 puntos. Cree una matriz de poder para repartir ese poder, usando AGs.
 1. Planteamiento
 Se tienen 5 partidos políticos con 50 curules distribuidas de manera no uniforme:
+
 A: 18
+
 B: 12
+
 C: 9
+
 D: 7
+
 E: 4
+
 Existen 50 entidades estatales, cada una con un peso político entre 1 y 100.
 El objetivo es asignar las entidades a los partidos de forma que el poder total recibido por cada uno sea proporcional a su número de curules.
 
-2. Cálculo del poder ideal
+3. Cálculo del poder ideal
 
 Se calcula el porcentaje de representación:
 Pi=curules/50

@@ -91,7 +91,7 @@ def reconstruir_imagen():
     
     # Parámetros del algoritmo
     tamano_inicial = 50
-    generaciones = 5000
+    generaciones = 4000
     prob_mutacion = 0.8 # Probabilidad alta debido al espacio de búsqueda 256^N
     
     # 2. Inicializar población paramétrica para cada canal
@@ -214,6 +214,7 @@ def reconstruir_imagen():
     plt.grid(True, linestyle='--', alpha=0.7)
     
     plt.tight_layout()
+    plt.savefig("P4_imagen.png", dpi=300, bbox_inches='tight')
     plt.show()
 
 if __name__ == "__main__":

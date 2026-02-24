@@ -13,10 +13,10 @@ def funcion(x):
 
 #seleccionados = poblacion(0,10,1,"binario",1,0)
 
-tamano_inicial = 10
+tamano_inicial = 20
 generaciones = 500
 
-pb = poblacion(tamano_inicial, 20, 1, "binario", 1, 0)
+pb = poblacion(tamano_inicial, 10, 1, "binario", 1, 0)
 lista_gen = np.arange(generaciones)
 lista_aptitud = []
 lista_aptitud_max = []
@@ -26,7 +26,8 @@ for i in range(generaciones):
         pb.genes[i].fenotipo = binario_a_entero_rango(pb.genes[i], 1, 0)
         pb.genes[i].aptitud = funcion(pb.genes[i].fenotipo)
 
-    sl = pb.elitismo(10)
+    sl = pb.elitismo(2)
+
     sl = pb.seleccion_torneo(seleccionados=sl)
     sl.tamano_inicial = pb.tamano_inicial
     sl.cruce()
@@ -57,4 +58,5 @@ plt.subplot(2,1,1)
 plt.plot(lista_gen, lista_aptitud)
 plt.subplot(2,1,2)
 plt.plot(lista_gen, lista_aptitud_max)
+plt.savefig("P1_maximo.png", dpi=300, bbox_inches='tight')
 plt.show()

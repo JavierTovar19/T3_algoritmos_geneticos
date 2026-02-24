@@ -5,7 +5,7 @@
 
 ## Maximizar la función 𝑓(𝑥)=𝑥 𝑠𝑒𝑛(10𝜋x) + 1, con 𝑥 ∈[0,1].
 **La solución del problema se da en el documento:**
-[P1_maximo.py](codigo/P1_maximo.py)
+[P1_maximo.py](Codigo/P1_maximo.py)
 
 ### Descripción de la Solución
 Para la solución de este problema se diseñó un programa orientado a objetos, compuesto por dos clases principales: una clase **Gen** y una clase **Población**.
@@ -46,6 +46,9 @@ Encontrar usando AGs el mejor despacho de energía minimizando los costos de tra
 ```
 
 ## Genere aleatoriamente una población de 50 matrices de 120 por 180, con números de 0 a 255, preséntelas como una gráfica RGB. La función de aptitud es una imagen cualquiera. Evolucione la población inicial hasta llegar a la imagen.
+**La solución del problema se da en el documento:**
+[P1_maximo.py](Codigo/P4_imagen.py)
+
 Para este ejercicio se utilizaron las mismas clases definidas en el primer problema. En este caso, el objetivo consiste en aproximar una imagen mediante un algoritmo genético, por lo que cada individuo representa una posible solución en forma de matrices de píxeles.
 Para facilitar la convergencia, la imagen se separó en sus tres canales de color (RGB), generando tres matrices aleatorias iniciales con valores enteros entre 0 y 255. Esta estrategia permite que el algoritmo encuentre soluciones de manera más eficiente, ya que reduce la complejidad del espacio de búsqueda al trabajar cada canal de forma independiente.
 

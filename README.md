@@ -36,8 +36,38 @@ El objetivo es asignar las entidades a los partidos de forma que el poder total 
 2. Cálculo del poder ideal
 
 Se calcula el porcentaje de representación:
-<img width="98" height="42" alt="{9264205F-B9E7-40E3-92F0-CC1C49909722}" src="https://github.com/user-attachments/assets/1ba4e446-8e33-4265-998d-cf544014df05" />
+Pi=curules/50
 
+Luego se obtiene el poder ideal
+Pode ideal= Pi x Poder Total
+
+Esto representa cuánto poder debería recibir cada partido en una distribución perfectamente proporcional.
+3. Implementación en Python
+
+El problema se resolvió utilizando un Algoritmo Genético.
+
+Cada individuo representa una posible asignación de las 50 entidades.
+
+La función de aptitud (fitness) calcula:  
+Error=∑∣Poder real−Poder ideal∣
+El algoritmo aplica:
+-Selección por torneo
+-Cruce
+-Mutación
+-Evolución por varias generaciones
+
+El objetivo es minimizar el error total.
+4. Resultados
+-El programa calcula:
+-Poder total del sistema
+-Poder ideal por partido
+-Poder real asignado
+-Error total
+Error%=(Error total/Poder total)​×100
+Un error porcentual bajo (por ejemplo 3–5%) indica una asignación cercana a la proporcionalidad ideal.
+5. Conclusión
+El Algoritmo Genético permitió encontrar una distribución del poder político que se aproxima a la representación legislativa.
+Aunque no garantiza error cero, logra minimizar significativamente el desbalance, demostrando la utilidad de los métodos evolutivos en problemas de optimización y asignación.
 ## Una empresa proveedora de energía eléctrica dispone de cuatro plantas de generación para satisfacer la demanda diaria de energía eléctrica en Cali, Bogotá, Medellín y Barranquilla. Cada una puede generar 3, 6, 5 y 4 GW al día respectivamente. Las necesidades de Cali, Bogotá, Medellín y Barranquilla son de 4, 3, 5 y 3 GW al día respectivamente. Los costos por el transporte de energía por cada GW entre plantas y ciudades se dan en la siguiente tabla:
 ```markdown
 | | Cali | Bogotá | Medellín | Barranquilla |

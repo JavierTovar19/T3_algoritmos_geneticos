@@ -5,9 +5,8 @@
 
 ## Maximizar la función 𝑓(𝑥)=𝑥 𝑠𝑒𝑛(10𝜋x) + 1, con 𝑥 ∈[0,1].
 **La solución del problema se da en el documento:**
-```markdown
 [P1_maximo.py](codigo/P1_maximo.py)
-```
+
 ### Descripción de la Solución
 Para la solución de este problema se diseñó un programa orientado a objetos, compuesto por dos clases principales: una clase **Gen** y una clase **Población**.
 La clase **Gen** incluye atributos como el tamaño en dos dimensiones, el tipo de representación (entero, decimal o binario), su valor de aptitud, el fenotipo y la probabilidad de cruce. Además, contiene los métodos necesarios para realizar los procesos de mutación y combinación genética.

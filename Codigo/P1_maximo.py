@@ -14,7 +14,7 @@ def funcion(x):
 #seleccionados = poblacion(0,10,1,"binario",1,0)
 
 tamano_inicial = 20
-generaciones = 500
+generaciones = 100
 
 pb = poblacion(tamano_inicial, 10, 1, "binario", 1, 0)
 lista_gen = np.arange(generaciones)

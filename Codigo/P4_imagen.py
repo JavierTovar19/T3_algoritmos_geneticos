@@ -65,7 +65,7 @@ def evolucionar_poblacion(pb, objetivo, prob_mutacion, tamano_inicial, largo, an
 
 def reconstruir_imagen():
     # 1. Cargar y preparar imagen objetivo
-    ruta_imagen = os.path.join(os.path.dirname(__file__), 'imagen.jpeg')
+    ruta_imagen = os.path.join(os.path.dirname(__file__), 'mariposa.jpg')
     if os.path.exists(ruta_imagen):
         # Leer en RGB
         img_original = cv2.imread(ruta_imagen)

@@ -65,7 +65,7 @@ def evolucionar_poblacion(pb, objetivo, prob_mutacion, tamano_inicial, largo, an
 
 def reconstruir_imagen():
     # 1. Cargar y preparar imagen objetivo
-    ruta_imagen = os.path.join(os.path.dirname(__file__), 'mariposa.jpg')
+    ruta_imagen = os.path.join(os.path.dirname(__file__), 'a.jpg')
     if os.path.exists(ruta_imagen):
         # Leer en RGB
         img_original = cv2.imread(ruta_imagen)
@@ -79,8 +79,8 @@ def reconstruir_imagen():
         cv2.circle(img_original, (20, 20), 8, (0, 255, 0), -1)
         cv2.circle(img_original, (12, 20), 8, (0, 0, 255), -1)
         
-    l = 180
-    a = 120
+    l = 16
+    a = 16
     objetivo = cv2.resize(img_original, (l,a))
     largo, ancho, canales = objetivo.shape
     
@@ -91,7 +91,7 @@ def reconstruir_imagen():
     
     # Parámetros del algoritmo
     tamano_inicial = 50
-    generaciones = 4000
+    generaciones = 1000
     prob_mutacion = 0.8 # Probabilidad alta debido al espacio de búsqueda 256^N
     
     # 2. Inicializar población paramétrica para cada canal

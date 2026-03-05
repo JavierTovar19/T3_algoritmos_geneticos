@@ -5,14 +5,14 @@
 
 ## Maximizar la función 𝑓(𝑥)=𝑥 𝑠𝑒𝑛(10𝜋x) + 1, con 𝑥 ∈[0,1].
 **La solución del problema se da en el documento:**
-[P1_maximo.py](Codigo/P1_maximo.py)
+[Codigo del problema 1](Codigo/P1_maximo.ipynb)
 
 ### Descripción de la Solución
 Para la solución de este problema se diseñó un programa orientado a objetos, compuesto por dos clases principales: una clase **Gen** y una clase **Población**.
 La clase **Gen** incluye atributos como el tamaño en dos dimensiones, el tipo de representación (entero, decimal o binario), su valor de aptitud, el fenotipo y la probabilidad de cruce. Además, contiene los métodos necesarios para realizar los procesos de mutación y combinación genética.
 Por su parte, la clase **Población** gestiona el conjunto de individuos, permitiendo evaluar la aptitud global del grupo, ejecutar los procesos de selección y cruce, e incorporar un mecanismo de elitismo que garantiza la conservación de un número determinado de los mejores individuos en cada generación.
 **Función de aptitud**La función de aptitud utilizada corresponde directamente a la función objetivo que se desea optimizar, de modo que su valor máximo representa también la aptitud máxima posible del sistema.
-**Tamaño de la población:** Se generó una población inicial de 10 individuos con representación binaria, cada uno con 20 cromosomas. Esta configuración permite una gran cantidad de combinaciones posibles. El proceso evolutivo se ejecutó durante 50 generaciones.
+**Tamaño de la población:** Se generó una población inicial de 20 individuos con representación binaria, cada uno con 10 cromosomas. Esta configuración permite una gran cantidad de combinaciones posibles. El proceso evolutivo se ejecutó durante 500 generaciones.
 **Elitismo:** El mecanismo de elitismo consiste en seleccionar los 2 individuos con mayor aptitud en cada generación, los cuales pasan directamente a la siguiente etapa de selección, garantizando la preservación de las mejores soluciones encontradas.
 **Cruce y mutación** Posteriormente, la población es sometida a procesos de cruce y mutación. Se plantearon dos enfoques para la selección de la nueva población:
 1. Combinar las poblaciones antigua y nueva, calcular la aptitud global y seleccionar los individuos con mejor desempeño.
@@ -47,7 +47,7 @@ Encontrar usando AGs el mejor despacho de energía minimizando los costos de tra
 
 ## Genere aleatoriamente una población de 50 matrices de 120 por 180, con números de 0 a 255, preséntelas como una gráfica RGB. La función de aptitud es una imagen cualquiera. Evolucione la población inicial hasta llegar a la imagen.
 **La solución del problema se da en el documento:**
-[P1_maximo.py](Codigo/P4_imagen.py)
+[Codigo del problema 4](Codigo/P4_imagen.ipynb)
 
 Para este ejercicio se utilizaron las mismas clases definidas en el primer problema. En este caso, el objetivo consiste en aproximar una imagen mediante un algoritmo genético, por lo que cada individuo representa una posible solución en forma de matrices de píxeles.
 Para facilitar la convergencia, la imagen se separó en sus tres canales de color (RGB), generando tres matrices aleatorias iniciales con valores enteros entre 0 y 255. Esta estrategia permite que el algoritmo encuentre soluciones de manera más eficiente, ya que reduce la complejidad del espacio de búsqueda al trabajar cada canal de forma independiente.
